@@ -1,26 +1,42 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
+import DataGatherer from './components/DataGatherer';
+import HeatMap from './components/HeatMap';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    meteorites: [],
+    userInputs: {
+      startingYear: '',
+      endingYear: '',
+      mass: '',
+    },
+  };
+
+  componentDidMount() {
+    fetch(
+      'https://data.nasa.gov/resource/gh4g-9sfh.json?$where=mass%20%3E%20100000'
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((meteorites) => {
+        this.setState({ meteorites });
+      });
+  }
+
+  addData = (startingYear, endingYear, mass) => {};
+
+  render() {
+    return (
+      <div>
+        <Header />
+        <DataGatherer />
+        <HeatMap />
+      </div>
+    );
+  }
 }
 
 export default App;
