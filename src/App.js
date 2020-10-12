@@ -26,14 +26,25 @@ class App extends React.Component {
       });
   }
 
-  addData = (startingYear, endingYear, mass) => {};
+  addData = (startingYear, endingYear, mass) => {
+    this.setState((previousState) => {
+      return {
+        ...previousState.meteorites,
+        userInputs: {
+          startingYear,
+          endingYear,
+          mass,
+        },
+      };
+    });
+  };
 
   render() {
     return (
       <div>
         <Header />
-        <DataGatherer />
-        <HeatMap />
+        <DataGatherer addData={this.addData} />
+        <HeatMap meteoriteInfo={this.state} />
       </div>
     );
   }

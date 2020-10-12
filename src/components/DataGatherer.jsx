@@ -25,43 +25,45 @@ class DataGatherer extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     console.log(this.state);
+    const { startingYear, endingYear, mass } = this.state.userInputs;
+    this.props.addData(startingYear, endingYear, mass);
   };
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor="year" id="year-range">
+        <label htmlFor='year' id='year-range'>
           Year range:
           <input
-            id="year"
+            id='year'
             onChange={this.handleChange}
-            name="startingYear"
+            name='startingYear'
             required
           ></input>
           -
           <input
             onChange={this.handleChange}
-            name="endingYear"
+            name='endingYear'
             required
           ></input>
         </label>
-        <label htmlFor="dropdown">
+        <label htmlFor='dropdown'>
           Mass:
           <select
-            id="dropdown"
+            id='dropdown'
             onChange={this.handleChange}
-            name="mass"
+            name='mass'
             required
           >
-            <option value="">--Please choose an option--</option>
-            <option value="100-150">100 - 150kg</option>
-            <option value="150-200">150 - 200kg</option>
-            <option value="200-300">200 - 300kg</option>
-            <option value="300-500">300 - 500kg</option>
-            <option value="500+">500kg +</option>
+            <option value=''>--Please choose an option--</option>
+            <option value='100-150'>100 - 150kg</option>
+            <option value='150-200'>150 - 200kg</option>
+            <option value='200-300'>200 - 300kg</option>
+            <option value='300-500'>300 - 500kg</option>
+            <option value='500+'>500kg +</option>
           </select>
         </label>
-        <button type="submit">Submit</button>
+        <button type='submit'>Submit</button>
       </form>
     );
   }
