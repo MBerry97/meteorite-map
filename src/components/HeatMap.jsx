@@ -7,21 +7,22 @@ const HeatMap = (props) => {
   const { startingYear, endingYear, mass } = props.meteoriteInfo.userInputs;
   const centerPosition = [0, 0];
   return (
-    <div className='leaflet-container'>
+    <div className="leaflet-container">
       <Map center={centerPosition} zoom={2}>
         <TileLayer
-          url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         {meteorites.map((meteorite) => {
           const { geolocation, name, year } = meteorite;
-          console.log(year);
 
           if (geolocation) {
             const { latitude, longitude } = geolocation;
             const position = [latitude, longitude];
             if (year) {
+              //can this if statement be combined with the if statement on line 19?
               const onlyYear = year.substring(0, 4);
+              //include weight in popup?
               return (
                 <Marker position={position}>
                   <Popup>
