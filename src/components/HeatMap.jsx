@@ -6,7 +6,6 @@ const HeatMap = (props) => {
   const { meteorites } = props.meteoriteInfo;
   const { startingYear, endingYear, mass } = props.meteoriteInfo.userInputs;
   const centerPosition = [0, 0];
-  console.log(meteorites, startingYear, endingYear, mass);
   const filteredMeteorites = meteoriteFilter(
     meteorites,
     startingYear,
