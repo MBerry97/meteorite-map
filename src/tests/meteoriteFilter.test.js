@@ -6,7 +6,7 @@ describe('meteoriteFilter', () => {
     expect(meteoriteFilter(array)).toBe(array);
   });
   it('returns an empty array when passed an empty array', () => {
-    expect(meteoriteFilter([], 500, 2500, '100-150')).toEqual([]);
+    expect(meteoriteFilter([], '500', '2500', '100-150')).toEqual([]);
   });
   it('returns an empty array when one item input does not fulfil filter', () => {
     const meteoriteArray = [
@@ -23,7 +23,7 @@ describe('meteoriteFilter', () => {
         year: '1952-01-01T00:00:00.000',
       },
     ];
-    expect(meteoriteFilter(meteoriteArray, 2000, 2001, '500+')).toEqual([]);
+    expect(meteoriteFilter(meteoriteArray, '2000', '2001', '500+')).toEqual([]);
   });
   it('returns same array when one item input does fulfil filter', () => {
     const meteoriteArray = [
@@ -54,7 +54,7 @@ describe('meteoriteFilter', () => {
         year: '1952-01-01T00:00:00.000',
       },
     ];
-    expect(meteoriteFilter(meteoriteArray, 1950, 1960, '500+')).toEqual(
+    expect(meteoriteFilter(meteoriteArray, '1950', '1960', '500+')).toEqual(
       meteoriteCopy
     );
   });
@@ -73,7 +73,7 @@ describe('meteoriteFilter', () => {
         year: '1952-01-01T00:00:00.000',
       },
     ];
-    expect(meteoriteFilter(meteoriteArray, 1500, 2500, '500+')).not.toBe(
+    expect(meteoriteFilter(meteoriteArray, '1500', '2500', '500+')).not.toBe(
       meteoriteArray
     );
   });
@@ -234,7 +234,7 @@ describe('meteoriteFilter', () => {
         year: '1952-01-01T00:00:00.000',
       },
     ];
-    expect(meteoriteFilter(meteoriteArray, 1950, 1960, '500+')).toEqual(
+    expect(meteoriteFilter(meteoriteArray, '1950', '1960', '500+')).toEqual(
       expected
     );
   });
