@@ -40,6 +40,7 @@ class App extends React.Component {
   };
 
   render() {
+    //do a this.state.isLoading for HeatMap component
     return (
       <div>
         <Header />
