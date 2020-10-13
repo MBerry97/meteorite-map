@@ -14,24 +14,22 @@ const HeatMap = (props) => {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         {meteorites.map((meteorite) => {
-          const { geolocation, name, year } = meteorite;
-
-          if (geolocation) {
+          console.log(meteorite);
+          const { geolocation, name, year, mass } = meteorite;
+          const kiloWeight = (mass / 1000).toFixed(0);
+          if (geolocation && year) {
             const { latitude, longitude } = geolocation;
             const position = [latitude, longitude];
-            if (year) {
-              //can this if statement be combined with the if statement on line 19?
-              const onlyYear = year.substring(0, 4);
-              //include weight in popup?
-              return (
-                <Marker position={position}>
-                  <Popup>
-                    {name} <br />
-                    {onlyYear}
-                  </Popup>
-                </Marker>
-              );
-            }
+            const onlyYear = year.substring(0, 4);
+            return (
+              <Marker key={name} position={position}>
+                <Popup>
+                  {name} <br />
+                  {onlyYear} <br />
+                  {kiloWeight}kg
+                </Popup>
+              </Marker>
+            );
           }
         })}
       </Map>

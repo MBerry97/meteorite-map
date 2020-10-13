@@ -39,6 +39,7 @@ class App extends React.Component {
     this.setState((previousState) => {
       return {
         ...previousState.meteorites,
+        isLoading: previousState.isLoading,
         userInputs: {
           startingYear,
           endingYear,
