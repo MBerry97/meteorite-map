@@ -7,6 +7,7 @@ import HeatMap from './components/HeatMap';
 class App extends React.Component {
   state = {
     meteorites: [],
+    isLoading: true,
     userInputs: {
       startingYear: '',
       endingYear: '',
@@ -22,7 +23,15 @@ class App extends React.Component {
         return res.json();
       })
       .then((meteorites) => {
-        this.setState({ meteorites });
+        this.setState({
+          meteorites,
+          isLoading: false,
+          userInputs: {
+            startingYear: '',
+            endingYear: '',
+            mass: '',
+          },
+        });
       });
   }
 
@@ -40,12 +49,15 @@ class App extends React.Component {
   };
 
   render() {
-    //do a this.state.isLoading for HeatMap component
     return (
       <div>
         <Header />
         <DataGatherer addData={this.addData} />
-        <HeatMap meteoriteInfo={this.state} />
+        {this.state.isLoading ? (
+          <p>Page is currently loading</p>
+        ) : (
+          <HeatMap meteoriteInfo={this.state} />
+        )}
       </div>
     );
   }
