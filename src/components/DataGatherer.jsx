@@ -1,4 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
+import { Button, TextField, Select } from '@material-ui/core';
+
+const FormContainer = styled.form`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+`;
+
+const InputField = styled.label`
+  margin-bottom: 15px;
+`;
 
 class DataGatherer extends React.Component {
   state = {
@@ -30,40 +43,42 @@ class DataGatherer extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="year" id="year-range">
+      <FormContainer onSubmit={this.handleSubmit}>
+        <InputField htmlFor='year' id='year-range'>
           Year range:
-          <input
-            id="year"
+          <TextField
+            id='year'
             onChange={this.handleChange}
-            name="startingYear"
+            name='startingYear'
             required
-          ></input>
+          ></TextField>
           -
-          <input
+          <TextField
             onChange={this.handleChange}
-            name="endingYear"
+            name='endingYear'
             required
-          ></input>
-        </label>
-        <label htmlFor="dropdown">
+          ></TextField>
+        </InputField>
+        <InputField htmlFor='dropdown'>
           Mass:
-          <select
-            id="dropdown"
+          <Select
+            id='dropdown'
             onChange={this.handleChange}
-            name="mass"
+            name='mass'
             required
           >
-            <option value="">--Please choose an option--</option>
-            <option value="100-150">100 - 150kg</option>
-            <option value="150-200">150 - 200kg</option>
-            <option value="200-300">200 - 300kg</option>
-            <option value="300-500">300 - 500kg</option>
-            <option value="500+">500kg +</option>
-          </select>
-        </label>
-        <button type="submit">Submit</button>
-      </form>
+            <option value=''>--Please choose an option--</option>
+            <option value='100-150'>100 - 150kg</option>
+            <option value='150-200'>150 - 200kg</option>
+            <option value='200-300'>200 - 300kg</option>
+            <option value='300-500'>300 - 500kg</option>
+            <option value='500+'>500kg +</option>
+          </Select>
+        </InputField>
+        <Button variant='contained' color='primary' type='submit'>
+          Submit
+        </Button>
+      </FormContainer>
     );
   }
 }

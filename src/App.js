@@ -3,6 +3,16 @@ import './App.css';
 import Header from './components/Header';
 import DataGatherer from './components/DataGatherer';
 import HeatMap from './components/HeatMap';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 class App extends React.Component {
   state = {
@@ -51,7 +61,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <Container>
         <Header />
         <DataGatherer addData={this.addData} />
         {this.state.isLoading ? (
@@ -59,7 +69,7 @@ class App extends React.Component {
         ) : (
           <HeatMap meteoriteInfo={this.state} />
         )}
-      </div>
+      </Container>
     );
   }
 }
