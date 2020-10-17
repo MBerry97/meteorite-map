@@ -45,7 +45,7 @@ class DataGatherer extends React.Component {
     return (
       <FormContainer onSubmit={this.handleSubmit}>
         <InputField htmlFor='year' id='year-range'>
-          Year range:
+          Year range :
           <TextField
             id='year'
             onChange={this.handleChange}
