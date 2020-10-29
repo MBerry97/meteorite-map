@@ -2,6 +2,9 @@
   text-align: center;
 }
 
+body {
+  background-color: rgb(241, 237, 237);
+}
 form {
   display: flex;
   flex-direction: column;
